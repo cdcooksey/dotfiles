@@ -1,3 +1,4 @@
+" Install Vundle first:  $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 set number	      " Turns on line numbers
