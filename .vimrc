@@ -1,4 +1,3 @@
-" Install Vundle first:  $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 set number	      " Turns on line numbers
@@ -37,11 +36,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'tpope/vim-fugitive'    " Nice git things
 Plugin 'bling/vim-airline'     " Nice git bottom
 "Plugin 'edkolev/tmuxline.vim'  " Nice airline + tmux stuff
-
+Plugin 'tpope/vim-surround'     " Adds ending things
+Plugin 'tpope/vim-endwise'     " Adds end to keyword things automatically.
+Plugin 'kchmck/vim-coffee-script'  " Please work. I need this one.
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
