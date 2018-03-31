@@ -1,3 +1,6 @@
+" Install Vundle first:  $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Install Pathongen 2nd: READ THIS: https://github.com/tpope/vim-pathogen
+
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 set number	      " Turns on line numbers
@@ -36,13 +39,19 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'tpope/vim-fugitive'    " Nice git things
 Plugin 'bling/vim-airline'     " Nice git bottom
-"Plugin 'edkolev/tmuxline.vim'  " Nice airline + tmux stuff
-Plugin 'tpope/vim-surround'     " Adds ending things
-Plugin 'tpope/vim-endwise'     " Adds end to keyword things automatically.
-Plugin 'kchmck/vim-coffee-script'  " Please work. I need this one.
+Plugin 'leafgarland/typescript-vim' " TypeScript syntax
+Plugin 'edkolev/tmuxline.vim'  " Nice airline + tmux stuff
+Bundle 'gabrielelana/vim-markdown'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 filetype plugin indent on    " required
+
+" Pathogen settings.  Installation instructions here: https://github.com/tpope/vim-pathogen
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
