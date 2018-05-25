@@ -38,20 +38,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
+" Plugin 'leafgarland/typescript-vim' " TypeScript syntax -- don't remember why this was commented out
+" Bundle 'gabrielelana/vim-markdown' " I think I hated this one.  I don't remember
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'tpope/vim-fugitive'    " Nice git things
 Plugin 'bling/vim-airline'     " Nice git bottom
-Plugin 'leafgarland/typescript-vim' " TypeScript syntax
 Plugin 'edkolev/tmuxline.vim'  " Nice airline + tmux stuff
-Bundle 'gabrielelana/vim-markdown'
+Plugin 'tpope/vim-surround'     " Adds ending things
+Plugin 'tpope/vim-endwise'     " Adds end to keyword things automatically.
+Plugin 'kchmck/vim-coffee-script'  " Please work. I need this one.
+Plugin 'leafgarland/typescript-vim'  " https://github.com/leafgarland/typescript-vim
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-filetype plugin indent on    " required
-
 " Pathogen settings.  Installation instructions here: https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
+
 syntax on
-filetype plugin indent on
+filetype plugin indent on    " required
+execute pathogen#infect()
+call pathogen#helptags()
