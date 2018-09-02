@@ -69,6 +69,7 @@ ZSH_THEME="muse"
 plugins=(
   git
   vi-mode
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
