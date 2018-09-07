@@ -101,3 +101,9 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
+
+
+
+
