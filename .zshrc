@@ -109,7 +109,4 @@ fi
 
 alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
 
-
-
-
 source $HOME/.zshenv
