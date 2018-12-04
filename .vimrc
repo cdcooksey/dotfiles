@@ -46,6 +46,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'atelierbram/Base2Tone-vim'  " https://github.com/atelierbram/Base2Tone-vim colorscheme
 Plugin 'itchyny/lightline.vim'      " Newer powerline replacement
 Plugin 'edkolev/tmuxline.vim'       " Nice airline + tmux stuff
 Plugin 'tpope/vim-fugitive'         " Nice git things
