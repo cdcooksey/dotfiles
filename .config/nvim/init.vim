@@ -12,4 +12,5 @@ syntax enable
 set background=dark
 set termguicolors
 " colorscheme Base2Tone_SpaceDark
-colorscheme Base2Tone_EveningDark
+" colorscheme Base2Tone_EveningDark
+colorscheme synthetic
