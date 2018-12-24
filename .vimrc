@@ -37,10 +37,7 @@ set noshowmode
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
-" Set lightline theme
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+
 
 call vundle#begin()
 
@@ -66,3 +63,16 @@ syntax on
 filetype plugin indent on    " required
 execute pathogen#infect()
 call pathogen#helptags()
+
+let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \   'javascript': ['prettier', 'eslint'],
+    \   'typescript': ['prettier', 'tslint'],
+    \}
+let g:ale_fix_on_save = 1
+
+" Set lightline theme
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
