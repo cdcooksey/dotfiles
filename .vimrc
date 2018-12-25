@@ -68,11 +68,12 @@ let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \   'javascript': ['prettier', 'eslint'],
     \   'typescript': ['prettier', 'tslint'],
+    \   'ruby': ['rubocop', 'standardrb'],
     \}
-let g:ale_fix_on_save = 1
+
+let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
 
 " Set lightline theme
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
-
