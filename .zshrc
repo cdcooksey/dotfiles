@@ -13,7 +13,10 @@ LC_ALL=en_US.UTF-8
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="bira"
+
+# ZSH_THEME="bira"
+ZSH_THEME="susi"
+
 # ZSH_THEME="kphoen"
 # ZSH_THEME="muse" # amazing git support for unstaged, staged, commited
 # ZSH_THEME="blinks"
