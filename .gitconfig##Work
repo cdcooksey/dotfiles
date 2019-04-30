@@ -1,0 +1,29 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Charlie Cooksey
+	email = ccooksey@bbasolutions.com
+[core]
+	editor = vim
+[push]
+	followTags = true
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
