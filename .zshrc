@@ -114,4 +114,3 @@ alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
 alias vim="nvim" # TODO use ZSH_CUSTOM folder
 
 source $HOME/.zshenv
-eval "$(pyenv init -)"
