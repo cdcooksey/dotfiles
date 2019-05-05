@@ -53,6 +53,8 @@ Plugin 'tpope/vim-endwise'          " Adds end to keyword things automatically.
 Plugin 'kchmck/vim-coffee-script'   " Please work. I need this one.
 Plugin 'leafgarland/typescript-vim' " https://github.com/leafgarland/typescript-vim
 Plugin 'w0rp/ale'                   " Code linter, https://github.com/w0rp/ale
+" Highlight trailing whitespace
+Plugin 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
