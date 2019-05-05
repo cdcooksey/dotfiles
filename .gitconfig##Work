@@ -1,40 +1,40 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = Charlie Cooksey
-	email = ccooksey@bbasolutions.com
+  name = Charlie Cooksey
+  email = ccooksey@bbasolutions.com
 
 [core]
-	editor = vim
+  editor = vim
 
 [push]
-	followTags = true
+  followTags = true
 
 [color]
-	ui = auto
+  ui = auto
 
 [color "branch"]
-	current = yellow bold
-	local = green bold
-	remote = cyan bold
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 
 [color "status"]
-	added = green bold
-	changed = yellow bold
-	untracked = red bold
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
 
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 
 [difftool]
-	prompt = false
+  prompt = false
 
 [alias]
   # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
@@ -46,26 +46,26 @@
   chunkyadd = add --patch # stage commits chunk by chunk
 
   # branch
-	b = branch
+  b = branch
   bv = branch -v
 
   # commit
   ci = commit
 
   # checkout
-	co = checkout
+  co = checkout
   nb = checkout -b # create and switch to a new branch (mnemonic: "git new branch branchname...")
 
   # diff
-	d = diff
-	dc = diff --cached
+  d = diff
+  dc = diff --cached
   last = diff HEAD^
 
   # log
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lgi = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lgi = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 
   # status
   s = status
@@ -73,13 +73,13 @@
 
   re = remote
   ls = ls-files
-	# Pull Upstream
-	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-	# Commit Amend Reuse Message HEAD
-	carmh = commit --amend --reuse-message=HEAD
-	# Push Current
-	pc = !"f() { remote=\"${1:-origin}\"; git push -u \"$remote\" $(git rev-parse --abbrev-ref HEAD); }; f"
-	# Push Current Force
-	pcf = !"f() { echo git pc \"$@\" -f; }; f"
-	# Mainly for YADM
-	untracked = !"f() { git status --porcelain=v1 -zunormal | xargs -0n1 printf \"%s\\n\" | grep -E '^\\?\\? \\.' | cut -c4-; }; f"
+  # Pull Upstream
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+  # Commit Amend Reuse Message HEAD
+  carmh = commit --amend --reuse-message=HEAD
+  # Push Current
+  pc = !"f() { remote=\"${1:-origin}\"; git push -u \"$remote\" $(git rev-parse --abbrev-ref HEAD); }; f"
+  # Push Current Force
+  pcf = !"f() { echo git pc \"$@\" -f; }; f"
+  # Mainly for YADM
+  untracked = !"f() { git status --porcelain=v1 -zunormal | xargs -0n1 printf \"%s\\n\" | grep -E '^\\?\\? \\.' | cut -c4-; }; f"
