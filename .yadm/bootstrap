@@ -1,11 +1,40 @@
 #!/bin/bash
 
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+  brew update
+fi
+
+
+if [ "$system_type" = "Linux" ]; then
+  sudo apt-get update
+fi
+
 if command -v vim >/dev/null 2>&1; then
   echo 'Bootstraping vim'
-  vim 'VundleInstall' '+qall'
+  vim 'VundleUpdate' '+qall'
+else
+  if [ "$system_type" = "Linux" ]; then
+    sudo apt-get -uy install vim
+  fi
+
+  if [ "$system_type" = "Darwin" ]; then
+    brew install vim
+  fi
+  vim 'VundleUpdate' '+qall'
 fi
 
 if command -v nvim >/dev/null 2>&1; then
   echo 'Bootstraping nvim'
-  vim 'VundleInstall' '+qall'
+  nvim 'VundleUpdate' '+qall'
+else
+  if [ "$system_type" = "Linux" ]; then
+    sudo apt-get -uy install nvim
+  fi
+
+  if [ "$system_type" = "Darwin" ]; then
+    brew install nvim
+  fi
+  nvim 'VundleUpdate' '+qall'
 fi
