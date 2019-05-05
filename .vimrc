@@ -37,22 +37,29 @@ set noshowmode
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
-
-
 call vundle#begin()
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'atelierbram/Base2Tone-vim'  " https://github.com/atelierbram/Base2Tone-vim colorscheme
-Plugin 'semibran/vim-colors-synthetic' " https://github.com/semibran/vim-colors-synthetic colorscheme
-Plugin 'itchyny/lightline.vim'      " Newer powerline replacement
-Plugin 'edkolev/tmuxline.vim'       " Nice airline + tmux stuff
-Plugin 'tpope/vim-fugitive'         " Nice git things
-Plugin 'tpope/vim-surround'         " Adds ending things
-Plugin 'tpope/vim-endwise'          " Adds end to keyword things automatically.
-Plugin 'kchmck/vim-coffee-script'   " Please work. I need this one.
-Plugin 'leafgarland/typescript-vim' " https://github.com/leafgarland/typescript-vim
-Plugin 'w0rp/ale'                   " Code linter, https://github.com/w0rp/ale
+" https://github.com/atelierbram/Base2Tone-vim colorscheme
+Plugin 'atelierbram/Base2Tone-vim'
+" https://github.com/semibran/vim-colors-synthetic colorscheme
+Plugin 'semibran/vim-colors-synthetic'
+" Newer powerline replacement
+Plugin 'itchyny/lightline.vim'
+" Nice airline + tmux stuff
+Plugin 'edkolev/tmuxline.vim'
+" Nice git things
+Plugin 'tpope/vim-fugitive'
+" Adds ending things
+Plugin 'tpope/vim-surround'
+" Adds end to keyword things automatically.
+Plugin 'tpope/vim-endwise'
+" Please work. I need this one.
+Plugin 'kchmck/vim-coffee-script'
+" https://github.com/leafgarland/typescript-vim
+Plugin 'leafgarland/typescript-vim'
+" Code linter, https://github.com/w0rp/ale
+Plugin 'w0rp/ale'
 " Highlight trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
