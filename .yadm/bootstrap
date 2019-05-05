@@ -1,1 +1,11 @@
-echo 'hi'
+#!/bin/bash
+
+if command -v vim >/dev/null 2>&1; then
+  echo 'Bootstraping vim'
+  vim 'VundleInstall' '+qall'
+fi
+
+if command -v nvim >/dev/null 2>&1; then
+  echo 'Bootstraping nvim'
+  vim 'VundleInstall' '+qall'
+fi
