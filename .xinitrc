@@ -1,0 +1,1 @@
+/home/charlie/.xinitrc##Linux
