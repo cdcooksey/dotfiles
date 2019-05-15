@@ -6,7 +6,7 @@
 #cell_width_scale = 1.0
 #clickable_url = true
 #dynamic_title = true
-font = Monospace 10
+#font = Monospace 10
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -58,22 +58,22 @@ background = rgba(63, 63, 63, 0.8)
 highlight = #2f2f2f
 
 # Colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+#color0 = #3f3f3f
+#color1 = #705050
+#color2 = #60b48a
+#color3 = #dfaf8f
+#color4 = #506070
+#color5 = #dc8cc3
+#color6 = #8cd0d3
+#color7 = #dcdccc
+#color8 = #709080
+#color9 = #dca3a3
+#color10 = #c3bf9f
+#color11 = #f0dfaf
+#color12 = #94bff3
+#color13 = #ec93d3
+#color14 = #93e0e3
+#color15 = #ffffff
 
 [hints]
 #font = Monospace 12
@@ -87,3 +87,35 @@ color15 = #ffffff
 #roundness = 2.0
 
 # vim: ft=dosini cms=#%s
+
+
+# https://raw.githubusercontent.com/kbobrowski/termite-snazzy/master/config
+[options]
+font = Menlo 10
+
+[colors]
+foreground = rgb(239, 240, 235)
+foreground_bold = rgb(239, 240, 235)
+#background = rgb(40, 42, 56)
+
+# If unset, will reverse foreground and background
+highlight = #2f2f2f
+
+# Colors from original hyper-snazzy theme
+color0 = rgb(40,42,56)
+color1 = rgb(255,92,87)
+color2 = rgb(90,247,142)
+color3 = rgb(243,249,157)
+color4 = rgb(87,199,255)
+color5 = rgb(255,106,193)
+color6 = rgb(154,237,254)
+color7 = rgb(241,241,240)
+
+# Other default termite colors
+color9 = #dca3a3
+color10 = #c3bf9f
+color11 = #f0dfaf
+color12 = #94bff3
+color13 = #ec93d3
+color14 = #93e0e3
+color15 = #ffffff
