@@ -1,3 +1,3 @@
-xterm*background: black
-xterm*foreground: lightgray
+Xterm*background: black
+Xterm*foreground: lightgray
 xTerm.termName: xterm-256color
