@@ -81,6 +81,7 @@ plugins=(
   docker-compose # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/docker-compose/README.md
   git
   vi-mode
+  systemd # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/systemd
   zsh-syntax-highlighting
 )
 
