@@ -75,6 +75,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  archlinux # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/archlinux
   cp # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/cp
   docker-compose # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/docker-compose/README.md
   git
