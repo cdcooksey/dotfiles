@@ -15,7 +15,8 @@ LC_ALL=en_US.UTF-8
 # ZSH_THEME="robbyrussell"
 
 # ZSH_THEME="bira"
-ZSH_THEME="susi"
+#ZSH_THEME="susi"
+ZSH_THEME="agnoster"
 
 # ZSH_THEME="kphoen"
 # ZSH_THEME="muse" # amazing git support for unstaged, staged, commited
