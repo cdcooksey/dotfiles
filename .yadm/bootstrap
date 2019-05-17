@@ -38,3 +38,6 @@ else
   fi
   nvim 'VundleUpdate' '+qall'
 fi
+
+echo "Init submodules"
+yadm submodule update --recursive --init

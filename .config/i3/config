@@ -45,7 +45,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec dmenu_run -fn 'Sans 14'
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #bindsym $mod+d exec rofi -show drun
-bindsym $mod+d exec rofi -combi-modi window#drun#ssh -theme solarized -font "hack 10" -show combi
+bindsym $mod+d exec rofi -combi-modi drun#run -theme solarized -font "hack 10" -show combi
 
 # change focus
 bindsym $mod+j focus left
