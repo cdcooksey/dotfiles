@@ -3,3 +3,6 @@ XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.reverseVideo: true
 XTerm.vt100.faceName: Liberation Mono:size=10:antialias=false
 XTerm.vt100.font: 7x13
+XTerm*background:        DarkOliveGreen
+XTerm*foreground:         white
+XTerm*cursorColor:        white
