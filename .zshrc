@@ -122,3 +122,10 @@ alias tmux-attach="tmux a -t "
 alias cat=bat
 
 source $HOME/.zshenv
+
+function mp4_all_in_dir () {
+  for file in *
+  do
+    to_mp4 "$file"
+  done
+}
