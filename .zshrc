@@ -119,6 +119,7 @@ fi
 alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
 alias vim="nvim" # TODO use ZSH_CUSTOM folder
 alias tmux-attach="tmux a -t "
+alias xterm="xterm -fa 'hack' -fs 10"
 #alias cat=bat
 
 source $HOME/.zshenv
