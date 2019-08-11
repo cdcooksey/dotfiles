@@ -37,6 +37,9 @@ set noshowmode
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
+# Enable spell checkkkkkk
+set spell
+
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
