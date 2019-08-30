@@ -44,7 +44,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'morhetz/gruvbox'
+Plugin 'junegunn/seoul256.vim'
 " https://github.com/semibran/vim-colors-synthetic colorscheme
 Plugin 'semibran/vim-colors-synthetic'
 " Newer powerline replacement
@@ -74,7 +74,7 @@ call vundle#end()            " required
 syntax on
 filetype plugin indent on    " required
 
-let g:gruvbox_contrast_dark = 'hard'
+let g:seoul256_background = 233
 
 execute pathogen#infect()
 call pathogen#helptags()

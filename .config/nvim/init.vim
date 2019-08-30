@@ -8,10 +8,7 @@ set termguicolors
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 endif
 
-syntax enable
 set background=dark
 set termguicolors
-" colorscheme Base2Tone_SpaceDark
-" colorscheme Base2Tone_EveningDark
-" colorscheme synthetic
-colorscheme gruvbox
+syntax enable
+colorscheme seoul256
