@@ -13,4 +13,7 @@ set background=dark
 set termguicolors
 " colorscheme Base2Tone_SpaceDark
 " colorscheme Base2Tone_EveningDark
-colorscheme synthetic
+" colorscheme synthetic
+colorscheme gruvbox
+
+let g:gruvbox_contrast_dark = 'soft'

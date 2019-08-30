@@ -44,9 +44,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-" Neovim syntax plugin relies on:
-" https://github.com/atelierbram/Base2Tone-vim colorscheme
-Plugin 'atelierbram/Base2Tone-vim'
+Plugin 'morhetz/gruvbox'
 " https://github.com/semibran/vim-colors-synthetic colorscheme
 Plugin 'semibran/vim-colors-synthetic'
 " Newer powerline replacement
