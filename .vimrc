@@ -43,6 +43,9 @@ set spell
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+" Neovim syntax plugin relies on:
+Plugin 'oka-h/yozakura.vim'
 " https://github.com/atelierbram/Base2Tone-vim colorscheme
 Plugin 'atelierbram/Base2Tone-vim'
 " https://github.com/semibran/vim-colors-synthetic colorscheme
