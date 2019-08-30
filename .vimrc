@@ -73,6 +73,9 @@ call vundle#end()            " required
 
 syntax on
 filetype plugin indent on    " required
+
+let g:gruvbox_contrast_dark = 'hard'
+
 execute pathogen#infect()
 call pathogen#helptags()
 
