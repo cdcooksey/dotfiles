@@ -43,6 +43,7 @@ set spell
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'skalnik/vim-vroom'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/seoul256.vim'
 " https://github.com/semibran/vim-colors-synthetic colorscheme
@@ -65,6 +66,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'w0rp/ale'
 " Highlight trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'noprompt/vim-yardoc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

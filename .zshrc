@@ -132,3 +132,6 @@ function mp4_all_in_dir () {
     to_mp4 "$file"
   done
 }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
