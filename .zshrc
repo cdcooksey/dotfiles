@@ -143,4 +143,3 @@ alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle 
 
 alias be="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
 alias xgp="git push --tags --set-upstream origin $(git branch -q --show-current)"
-alias gfindhistory="alias | grep ($1)"
