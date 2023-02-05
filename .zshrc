@@ -123,6 +123,8 @@ alias xterm="xterm -fa 'hack' -fs 10"
 alias ks="kubectl"
 #alias cat=bat
 alias mvim="vim"
+alias ls="exa -la"
+alias docker-compose="/usr/libexec/docker/cli-plugins/docker-compose"
 
 source $HOME/.zshenv
 
@@ -135,3 +137,10 @@ function mp4_all_in_dir () {
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
+
+alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/rails/cli'
+
+alias be="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
+alias xgp="git push --tags --set-upstream origin $(git branch -q --show-current)"
+alias gfindhistory="alias | grep ($1)"
