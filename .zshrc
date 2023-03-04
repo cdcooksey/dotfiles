@@ -138,6 +138,7 @@ function mp4_all_in_dir () {
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
 
+export EDITOR="nvim"
 
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
@@ -145,3 +146,6 @@ alias be="bundle exec"
 alias xgp="git push --tags --set-upstream origin $(git branch -q --show-current)"
 alias gfindhistory="alias | grep ($1)"
 eval "$(rbenv init -)"
+
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
