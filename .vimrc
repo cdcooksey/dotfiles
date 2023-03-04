@@ -1,9 +1,8 @@
-" Install Vundle first:  $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " Install Pathongen 2nd: READ THIS: https://github.com/tpope/vim-pathogen
 " Install NerdTree with Pathogen. READ THIS: https://github.com/scrooloose/nerdtree
 
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
+" set nocompatible      " We're running Vim, not Vi!
+" syntax on             " Enable syntax highlighting
 set number	      " Turns on line numbers
 
 " Basic Configuration
@@ -17,7 +16,7 @@ filetype plugin indent on       " load file type plugins + indentation
 
 "" Whitespace
 set nowrap                      " don't wrap lines
-set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+" set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -29,49 +28,36 @@ set smartcase                   " ... unless they contain at least one capital l
 
 " Turn off -- INSERT -- display as lightline will show it instead
 set noshowmode
-
 "autocmd Filetype html setlocal ts=2 sts=2 sw=2
 "autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Enable spell checkkkkkk
-set spell
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'skalnik/vim-vroom'
-Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/seoul256.vim'
-" https://github.com/semibran/vim-colors-synthetic colorscheme
-Plugin 'semibran/vim-colors-synthetic'
-" Newer powerline replacement
-Plugin 'itchyny/lightline.vim'
-" Nice airline + tmux stuff
-Plugin 'edkolev/tmuxline.vim'
-" Nice git things
-Plugin 'tpope/vim-fugitive'
-" Adds ending things
-Plugin 'tpope/vim-surround'
-" Adds end to keyword things automatically.
-Plugin 'tpope/vim-endwise'
-" Please work. I need this one.
-Plugin 'kchmck/vim-coffee-script'
-" https://github.com/leafgarland/typescript-vim
-Plugin 'leafgarland/typescript-vim'
-" Code linter, https://github.com/w0rp/ale
-Plugin 'w0rp/ale'
-" Highlight trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'noprompt/vim-yardoc'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
-" Pathogen settings.  Installation instructions here: https://github.com/tpope/vim-pathogen
+Plug 'skalnik/vim-vroom'
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/seoul256.vim' " https://github.com/semibran/vim-colors-synthetic colorscheme
+Plug 'semibran/vim-colors-synthetic' " Newer powerline replacement
+Plug 'itchyny/lightline.vim' " Nice airline + tmux stuff
+Plug 'edkolev/tmuxline.vim' " Nice git things
+Plug 'tpope/vim-fugitive' " Adds ending things
+Plug 'tpope/vim-surround' " Adds end to keyword things automatically.
+Plug 'tpope/vim-endwise' " Please work. I need this one.
+Plug 'kchmck/vim-coffee-script' " https://github.com/leafgarland/typescript-vim
+Plug 'leafgarland/typescript-vim' " Code linter, https://github.com/w0rp/ale
+Plug 'w0rp/ale' " Highlight trailing whitespace
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'noprompt/vim-yardoc'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 syntax on
 filetype plugin indent on    " required
