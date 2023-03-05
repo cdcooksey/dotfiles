@@ -50,6 +50,7 @@ Plug 'edkolev/tmuxline.vim' " Nice git things
 Plug 'tpope/vim-fugitive' " Adds ending things
 Plug 'tpope/vim-surround' " Adds end to keyword things automatically.
 Plug 'tpope/vim-endwise' " Please work. I need this one.
+Plug 'tpope/vim-rails' " Rails plugin
 Plug 'kchmck/vim-coffee-script' " https://github.com/leafgarland/typescript-vim
 Plug 'leafgarland/typescript-vim' " Code linter, https://github.com/w0rp/ale
 Plug 'w0rp/ale' " Highlight trailing whitespace
