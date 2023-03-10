@@ -68,7 +68,6 @@ syntax on
 filetype plugin indent on    " required
 
 let g:airline_theme='molokai'
-# let g:airline#extensions#tabline#enabled = 1 " buffer headers
 let g:seoul256_background = 233
 
 execute pathogen#infect()
