@@ -60,13 +60,15 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
+Plug 'preservim/vim-indent-guides'
 call plug#end()
 
 syntax on
 filetype plugin indent on    " required
 
 let g:airline_theme='molokai'
-let g:airline#extensions#tabline#enabled = 1 " buffer headers
+# let g:airline#extensions#tabline#enabled = 1 " buffer headers
 let g:seoul256_background = 233
 
 execute pathogen#infect()
