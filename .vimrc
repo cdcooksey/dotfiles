@@ -66,6 +66,7 @@ call plug#end()
 
 syntax on
 filetype plugin indent on    " required
+set autoindent expandtab tabstop=2 shiftwidth=2
 
 let g:airline_theme='molokai'
 let g:seoul256_background = 233
@@ -86,3 +87,4 @@ let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ }
+
