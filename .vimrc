@@ -6,6 +6,7 @@
 set number	      " Turns on line numbers
 
 " Basic Configuration
+nnoremap <c-p> :Files<CR>
 syntax enable
 set encoding=utf-8
 set clipboard="unnamed"         " allow copy and paste to system clipboard
@@ -40,7 +41,6 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'skalnik/vim-vroom'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/seoul256.vim' " https://github.com/semibran/vim-colors-synthetic colorscheme
@@ -58,11 +58,16 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'noprompt/vim-yardoc'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
+Plug 'preservim/vim-indent-guides'
 call plug#end()
 
 syntax on
 filetype plugin indent on    " required
 
+let g:airline_theme='molokai'
 let g:seoul256_background = 233
 
 execute pathogen#infect()
