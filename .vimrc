@@ -55,16 +55,20 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive' " Adds ending things
+Plug 'tpope/vim-surround' " Adds end to keyword things automatically.
+Plug 'tpope/vim-endwise' " Please work. I need this one.
+Plug 'tpope/vim-rails' " Rails plugin
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-markdown'
 Plug 'skalnik/vim-vroom'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/seoul256.vim' " https://github.com/semibran/vim-colors-synthetic colorscheme
 Plug 'semibran/vim-colors-synthetic' " Newer powerline replacement
 Plug 'itchyny/lightline.vim' " Nice airline + tmux stuff
 Plug 'edkolev/tmuxline.vim' " Nice git things
-Plug 'tpope/vim-fugitive' " Adds ending things
-Plug 'tpope/vim-surround' " Adds end to keyword things automatically.
-Plug 'tpope/vim-endwise' " Please work. I need this one.
-Plug 'tpope/vim-rails' " Rails plugin
 Plug 'kchmck/vim-coffee-script' " https://github.com/leafgarland/typescript-vim
 Plug 'leafgarland/typescript-vim' " Code linter, https://github.com/w0rp/ale
 Plug 'w0rp/ale' " Highlight trailing whitespace
