@@ -15,7 +15,7 @@ LC_ALL=en_US.UTF-8
 # ZSH_THEME="robbyrussell"
 
 # ZSH_THEME="bira"
-#ZSH_THEME="susi"
+# ZSH_THEME="susi"
 ZSH_THEME="agnoster"
 
 # ZSH_THEME="kphoen"
@@ -80,7 +80,7 @@ plugins=(
   docker-compose # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/docker-compose/README.md
   git
   vi-mode
-  # systemd # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/systemd
+  systemd # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/systemd
 )
 
 source $ZSH/oh-my-zsh.sh
