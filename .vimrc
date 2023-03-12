@@ -15,6 +15,20 @@ set number                      " show line numbers
 set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 
+" Code folding configuration
+"    zo opens a fold at the cursor.
+"    zShift+o opens all folds at the cursor.
+"    zc closes a fold at the cursor.
+"    zm increases the foldlevel by one.
+"    zShift+m closes all open folds.
+"    zr decreases the foldlevel by one.
+"    zShift+r decreases the foldlevel to zero -- all folds will be open.
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+" end code folding configuration
+
 "" Whitespace
 set nowrap                      " don't wrap lines
 " set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
