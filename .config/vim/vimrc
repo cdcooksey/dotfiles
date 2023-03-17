@@ -92,23 +92,26 @@ let g:indent_guides_enable_on_vim_startup = 1
 " set indent guide colours
 set background=dark
 
+" NVM node path for Github Copilot
+let g:copilot_node_command = "~/.nvm/versions/node/v19.8.1/bin/node"
+
+" Pretties
 let g:airline_theme='molokai'
-let g:seoul256_background = 233
 
 execute pathogen#infect()
 call pathogen#helptags()
 
 let g:ale_fixers = {
-    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \   'javascript': ['prettier', 'eslint'],
-    \   'typescript': ['prettier', 'tslint'],
-    \   'ruby': ['rubocop', 'standardrb'],
-    \}
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['prettier', 'eslint'],
+  \   'typescript': ['prettier', 'tslint'],
+  \   'ruby': ['rubocop', 'standardrb'],
+  \}
 
 let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
 
 " Set lightline theme
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ }
+  \ 'colorscheme': 'powerline',
+  \ }
 
