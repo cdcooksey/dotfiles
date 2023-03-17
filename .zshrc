@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
 
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -76,6 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 EDITOR="vim"
+GIT_EDITOR="vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
