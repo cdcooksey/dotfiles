@@ -55,18 +55,17 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive' " Adds ending things
-Plug 'tpope/vim-surround' " Adds end to keyword things automatically.
-Plug 'tpope/vim-endwise' " Please work. I need this one.
-Plug 'tpope/vim-rails' " Rails plugin
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-markdown'
+Plug 'thoughtbot/vim-rspec'
 Plug 'skalnik/vim-vroom'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/seoul256.vim' " https://github.com/semibran/vim-colors-synthetic colorscheme
-Plug 'semibran/vim-colors-synthetic' " Newer powerline replacement
 Plug 'itchyny/lightline.vim' " Nice airline + tmux stuff
 Plug 'edkolev/tmuxline.vim' " Nice git things
 Plug 'kchmck/vim-coffee-script' " https://github.com/leafgarland/typescript-vim
@@ -85,6 +84,7 @@ call plug#end()
 syntax on
 filetype plugin indent on    " required
 set autoindent expandtab tabstop=2 shiftwidth=2
+let g:indent_guides_enable_on_vim_startup = 1 " enable indent guides by default, :IndentGuidesDisable to disable
 
 let g:airline_theme='molokai'
 let g:seoul256_background = 233
