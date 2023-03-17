@@ -35,17 +35,20 @@ set nowrap                      " don't wrap lines
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
-"" Searching
-set hlsearch                    " highlight matches
-set incsearch                   " incremental searching
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ... unless they contain at least one capital letter
+""" Search Options {{{
+" Enable highlighting of search results
+set hlsearch
 
-" Turn off -- INSERT -- display as lightline will show it instead
-set noshowmode
-"autocmd Filetype html setlocal ts=2 sts=2 sw=2
-"autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-"autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+" incremental searching that shows partial matches
+set incsearch
+
+" Ignore case when searching
+set ignorecase
+
+" Automatically switch search to case-sensitive if the search string contains
+" an upper-case character
+set smartcase
+""" }}}
 
 " Install vim-plug if we don't already have it
 if empty(glob('~/.vim/autoload/plug.vim'))

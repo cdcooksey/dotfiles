@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
 
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -8,25 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-
-# ZSH_THEME="bira"
-# ZSH_THEME="susi"
 ZSH_THEME="agnoster"
-
-# ZSH_THEME="kphoen"
-# ZSH_THEME="muse" # amazing git support for unstaged, staged, commited
-# ZSH_THEME="blinks"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "amuse" "bira" "clean" "flazz" "junkfood" "kphoen" "muse")
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,12 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+EDITOR="vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -115,11 +93,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
-alias vim="nvim" # TODO use ZSH_CUSTOM folder
 alias tmux-attach="tmux a -t "
-alias xterm="xterm -fa 'hack' -fs 10"
-alias ks="kubectl"
-#alias cat=bat
 alias mvim="vim"
 alias docker-compose="/usr/libexec/docker/cli-plugins/docker-compose"
 
@@ -136,7 +110,6 @@ function mp4_all_in_dir () {
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
 
-export EDITOR="nvim"
 
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
