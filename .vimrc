@@ -1,1 +1,1 @@
-/home/charlie/.config/vim/vimrc
+.config/vim/vimrc
