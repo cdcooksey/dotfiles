@@ -72,6 +72,10 @@ set incsearch
 " Ignore case when searching
 set ignorecase
 
+" ctags optimization
+set autochdir
+set tags=tags;
+
 " Automatically switch search to case-sensitive if the search string contains
 " an upper-case character
 set smartcase
