@@ -79,6 +79,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'preservim/vim-indent-guides'
+Plug 'github/copilot.vim'
 call plug#end()
 
 syntax on
