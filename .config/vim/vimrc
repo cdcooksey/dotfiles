@@ -26,6 +26,12 @@ set showcmd
 " Set the window title to the current file name
 set title
 
+" The number of screen lines to keep above and below the cursor.
+set scrolloff=5
+
+" The number of screen columns to keep to the left and right of the cursor.
+set sidescrolloff=5
+
 filetype plugin indent on       " load file type plugins + indentation
 
 " Code folding configuration
@@ -95,6 +101,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'preservim/vim-indent-guides'
 Plug 'github/copilot.vim'
+Plug 'kopischke/vim-fetch' " Open a file at line number file:23
 call plug#end()
 
 syntax on
