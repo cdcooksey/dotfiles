@@ -84,7 +84,12 @@ call plug#end()
 syntax on
 filetype plugin indent on    " required
 set autoindent expandtab tabstop=2 shiftwidth=2
-let g:indent_guides_enable_on_vim_startup = 1 " enable indent guides by default, :IndentGuidesDisable to disable
+
+" enable indent guides by default, :IndentGuidesDisable to disable
+let g:indent_guides_enable_on_vim_startup = 1
+
+" set indent guide colours
+set background=dark
 
 let g:airline_theme='molokai'
 let g:seoul256_background = 233
