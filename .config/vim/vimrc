@@ -8,11 +8,24 @@ set number	      " Turns on line numbers
 " Basic Configuration
 nnoremap <c-p> :Files<CR>
 syntax enable
+
 set encoding=utf-8
-set clipboard="unnamed"         " allow copy and paste to system clipboard
-set hidden                      " allow changing buffers w/o write
-set number                      " show line numbers
-set showcmd                     " display incomplete commands
+
+" allow copy and paste to system clipboard
+set clipboard="unnamed"
+
+" allow changing buffers w/o write
+set hidden
+
+" show line numbers
+set number
+
+" display incomplete commands
+set showcmd
+
+" Set the window title to the current file name
+set title
+
 filetype plugin indent on       " load file type plugins + indentation
 
 " Code folding configuration
