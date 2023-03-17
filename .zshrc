@@ -110,7 +110,7 @@ function mp4_all_in_dir () {
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
 
-
+alias rbenv-install-local="rbenv install $(cat .ruby-version)"
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
 alias be="bundle exec"
