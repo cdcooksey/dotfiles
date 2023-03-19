@@ -70,8 +70,6 @@ plugins=(
   zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -98,11 +96,7 @@ GIT_EDITOR="vim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias gfgp="git fetch --all && git pull" # TODO use ZSH_CUSTOM folder
-alias tmux-attach="tmux a -t "
 alias mvim="vim"
-alias docker-compose="/usr/libexec/docker/cli-plugins/docker-compose"
-
-source $HOME/.zshenv
 
 function mp4_all_in_dir () {
   for file in *
@@ -122,8 +116,11 @@ alias xgp="git push --tags --set-upstream origin $(git branch -q --show-current)
 alias gfindhistory="alias | grep ($1)"
 eval "$(rbenv init -)"
 
+source $ZSH/oh-my-zsh.sh
+source $HOME/.zshenv
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
