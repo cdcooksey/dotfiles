@@ -46,7 +46,10 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -57,12 +60,14 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  bundler
   cp # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/cp
   command-not-found # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/README.md
   docker-compose # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/docker-compose/README.md
   git
   vi-mode
   systemd # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/systemd
+  zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -113,7 +118,6 @@ export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
 alias rbenv-install-local="rbenv install $(cat .ruby-version)"
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
-alias be="bundle exec"
 alias xgp="git push --tags --set-upstream origin $(git branch -q --show-current)"
 alias gfindhistory="alias | grep ($1)"
 eval "$(rbenv init -)"
