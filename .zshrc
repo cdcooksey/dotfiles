@@ -63,6 +63,7 @@ plugins=(
   bundler
   cp # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/cp
   command-not-found # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/README.md
+  debian
   docker-compose # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/docker-compose/README.md
   git
   vi-mode
