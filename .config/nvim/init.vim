@@ -11,4 +11,4 @@ endif
 set background=dark
 set termguicolors
 syntax enable
-colorscheme seoul256
+set foldmethod=indent
