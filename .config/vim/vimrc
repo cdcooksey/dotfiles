@@ -119,8 +119,8 @@ syntax on
 filetype plugin indent on    " required
 set autoindent expandtab tabstop=2 shiftwidth=2
 
-" enable indent guides by default, :IndentGuidesDisable to disable
-let g:indent_guides_enable_on_vim_startup = 1
+" disable indent guides by default, :IndentGuidesEnable to enable 
+let g:indent_guides_enable_on_vim_startup = 0
 
 " set indent guide colours
 set background=dark
@@ -128,26 +128,27 @@ set background=dark
 " NVM node path for Github Copilot
 let g:copilot_node_command = "~/.nvm/versions/node/v19.8.1/bin/node"
 
+" Disable ALE linters by default. :ALEEnable to enable
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
+let g:ale_fixers = {
+      \    '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \    'javascript': ['prettier', 'eslint'],
+      \    'typescript': ['prettier', 'tslint'],
+      \    'ruby': ['rubocop', 'standardrb'],
+      \ }
+
 " Pretties
 let g:airline_theme='molokai'
 
 execute pathogen#infect()
 call pathogen#helptags()
 
-let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \   'javascript': ['prettier', 'eslint'],
-  \   'typescript': ['prettier', 'tslint'],
-  \   'ruby': ['rubocop', 'standardrb'],
-  \}
-
-let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
-
 " Set lightline theme
 let g:lightline = {
   \ 'colorscheme': 'powerline',
   \ }
-
 
 " Netrw settings
 let g:netrw_banner = 0
