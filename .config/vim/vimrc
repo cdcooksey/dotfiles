@@ -18,6 +18,7 @@ set hidden
 
 " show line numbers
 set number
+set relativenumber
 
 " display incomplete commands
 set showcmd
