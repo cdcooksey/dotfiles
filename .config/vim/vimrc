@@ -33,7 +33,7 @@ set scrolloff=5
 set sidescrolloff=5
 
 " set default path for VIM swp files
-set directory^=$HOME/.vim/swap/
+set directory^=$HOME/.vim/swap//
 
 filetype plugin indent on       " load file type plugins + indentation
 
