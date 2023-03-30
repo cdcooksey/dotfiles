@@ -32,6 +32,9 @@ set scrolloff=5
 " The number of screen columns to keep to the left and right of the cursor.
 set sidescrolloff=5
 
+" set default path for VIM swp files
+set directory^=$HOME/.vim/swap/
+
 filetype plugin indent on       " load file type plugins + indentation
 
 """ Folding Options {{{
