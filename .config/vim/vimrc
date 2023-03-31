@@ -27,6 +27,18 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "asyncrun_background_term"
+""" }}}
+
+""" vim-fugitive Options {{{
+" Git status
+nnoremap <leader>gs :G status<CR>
+" Git blame
+nnoremap <leader>gb :G blame<CR>
+" Git commit
+nnoremap <leader>gc :G commit<CR>
+" Git diff
+nnoremap <leader>gd :G diff<CR>
 """ }}}
 
 """ Folding Options {{{
@@ -71,6 +83,7 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'slim-template/vim-slim'
 Plug 'vim-test/vim-test'
