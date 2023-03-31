@@ -1,41 +1,33 @@
-" Install Pathongen 2nd: READ THIS: https://github.com/tpope/vim-pathogen
-
-" set nocompatible      " We're running Vim, not Vi!
-" syntax on             " Enable syntax highlighting
-set number	      " Turns on line numbers
-
-" Basic Configuration
-nnoremap <c-p> :Files<CR>
-syntax enable
+let mapleader = ","
 
 set encoding=utf-8
-
-" allow copy and paste to system clipboard
-set clipboard="unnamed"
-
-" allow changing buffers w/o write
-set hidden
-
-" show line numbers
-set number
+set nocompatible                 " We're running Vim, not Vi!
+syntax on                        " Enable syntax highlighting
+set number                       " Turns on line numbers
+set clipboard="unnamed"          " allow copy and paste to system clipboard
+set hidden                       " allow changing buffers w/o write
+set number                       " show line numbers
+set showcmd                      " display incomplete commands
+set title                        " Set the window title to the current file name
 set relativenumber
-
-" display incomplete commands
-set showcmd
-
-" Set the window title to the current file name
-set title
-
-" The number of screen lines to keep above and below the cursor.
-set scrolloff=5
-
-" The number of screen columns to keep to the left and right of the cursor.
-set sidescrolloff=5
-
-" set default path for VIM swp files
-set directory^=$HOME/.vim/swap//
+set scrolloff=5                  " The number of screen lines to keep above and below the cursor.
+set sidescrolloff=5              " The number of screen columns to keep to the left and right of the cursor.
+set directory^=$HOME/.vim/swap// " set default path for VIM swp files
 
 filetype plugin indent on       " load file type plugins + indentation
+
+""" fzf Options {{{
+nnoremap <c-p> :Files<CR>
+nnoremap <leader>g :GFiles<CR>
+""" }}}
+
+""" vim-test Options {{{
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+""" }}}
 
 """ Folding Options {{{
 "    zo opens a fold at the cursor.
@@ -51,15 +43,6 @@ set nofoldenable
 set foldlevel=2
 """ }}}
 
-""" vim-test Options {{{
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-""" }}}
-
-"" Whitespace
 set nowrap                      " don't wrap lines
 " set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
@@ -68,17 +51,13 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 """ Search Options {{{
 " Enable highlighting of search results
 set hlsearch
-
 " incremental searching that shows partial matches
 set incsearch
-
 " Ignore case when searching
 set ignorecase
-
 " ctags optimization
 set autochdir
 set tags=tags;
-
 " Automatically switch search to case-sensitive if the search string contains
 " an upper-case character
 set smartcase
