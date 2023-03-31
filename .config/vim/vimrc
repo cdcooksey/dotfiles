@@ -18,7 +18,7 @@ filetype plugin indent on       " load file type plugins + indentation
 
 """ fzf Options {{{
 nnoremap <c-p> :Files<CR>
-nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>G :GFiles<CR>
 """ }}}
 
 """ vim-test Options {{{
