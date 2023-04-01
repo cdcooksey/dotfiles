@@ -41,6 +41,13 @@ nnoremap <leader>gc :G commit<CR>
 nnoremap <leader>gd :G diff<CR>
 """ }}}
 
+""" Quicker window movement {{{
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+""" }}}
+
 """ Folding Options {{{
 "    zo opens a fold at the cursor.
 "    zShift+o opens all folds at the cursor.
