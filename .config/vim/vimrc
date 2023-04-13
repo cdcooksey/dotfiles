@@ -13,12 +13,25 @@ set relativenumber
 set scrolloff=5                  " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=5              " The number of screen columns to keep to the left and right of the cursor.
 set directory^=$HOME/.vim/swap// " set default path for VIM swp files
+set nowrap                       " don't wrap lines
+set expandtab                    " use spaces, not tabs (optional)
+set backspace=indent,eol,start   " backspace through everything in insert mode
+" set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 
 filetype plugin indent on       " load file type plugins + indentation
 
 """ fzf Options {{{
 nnoremap <c-p> :Files<CR>
 nnoremap <leader>G :GFiles<CR>
+""" }}}
+
+""" AndrewRadev/splitjoin.vim Options {{{
+nmap <leader>sj :SplitjoinSplit<cr>
+nmap <leader>sk :SplitjoinJoin<cr>
+""" }}}
+
+""" AndrewRadev/switch.vim Options {{{
+nmap <leader>ss :Switch<cr>
 """ }}}
 
 """ vim-test Options {{{
@@ -62,10 +75,6 @@ set nofoldenable
 set foldlevel=2
 """ }}}
 
-set nowrap                      " don't wrap lines
-" set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
-set expandtab                   " use spaces, not tabs (optional)
-set backspace=indent,eol,start  " backspace through everything in insert mode
 
 """ Search Options {{{
 " Enable highlighting of search results
@@ -90,6 +99,8 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'slim-template/vim-slim'
