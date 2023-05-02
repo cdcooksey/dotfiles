@@ -106,6 +106,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'slim-template/vim-slim'
 Plug 'vim-test/vim-test'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
@@ -114,11 +115,10 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-markdown'
 Plug 'skalnik/vim-vroom'
-Plug 'itchyny/lightline.vim' " Nice airline + tmux stuff
-Plug 'edkolev/tmuxline.vim' " Nice git things
-Plug 'kchmck/vim-coffee-script' " https://github.com/leafgarland/typescript-vim
-Plug 'leafgarland/typescript-vim' " Code linter, https://github.com/w0rp/ale
-Plug 'w0rp/ale' " Highlight trailing whitespace
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'dense-analysis/ale'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'noprompt/vim-yardoc'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -131,11 +131,10 @@ Plug 'github/copilot.vim'
 Plug 'kopischke/vim-fetch' " Open a file at line number file:23
 call plug#end()
 
-syntax on
 filetype plugin indent on    " required
 set autoindent expandtab tabstop=2 shiftwidth=2
 
-" disable indent guides by default, :IndentGuidesEnable to enable 
+" disable indent guides by default, :IndentGuidesEnable to enable
 let g:indent_guides_enable_on_vim_startup = 0
 
 " set indent guide colours
@@ -144,17 +143,23 @@ set background=dark
 " NVM node path for Github Copilot
 let g:copilot_node_command = "~/.nvm/versions/node/v19.8.1/bin/node"
 
-" Disable ALE linters by default. :ALEEnable to enable
-let g:ale_lint_on_text_changed = 'never'
-
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_standardrb_executable = 'bundle'
+let g:ale_ruby_rubocop_use_bundler = 1
+let g:ale_ruby_standardrb_use_bundler = 1
 let g:ale_fix_on_save = 0 " Set this to 1 if you wanna run :ALEFix on save
 let g:ale_fixers = {
-      \    '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \    'javascript': ['prettier', 'eslint'],
-      \    'typescript': ['prettier', 'tslint'],
-      \    'ruby': ['rubocop', 'standardrb'],
-      \ }
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'javascript': ['prettier', 'eslint'],
+\  'typescript': ['prettier', 'tslint'],
+\  'ruby': ['rubocop', 'standardrb', 'rufo', 'erblint'],
+\  'scss': ['prettier', 'stylelint'],
+\}
 
+" \  'ruby': ['rufo', 'standardrb', 'erblint', 'rubocop'],
 " Pretties
 let g:airline_theme='molokai'
 
@@ -182,4 +187,3 @@ highlight NetrwDir        ctermfg=blue
 highlight NetrwSymLink    ctermfg=magenta
 highlight NetrwSpecial    ctermfg=yellow
 highlight NetrwHelp       ctermfg=green
-
