@@ -75,14 +75,35 @@ export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
 alias gfindhistory="alias | grep ($1)"
-eval "$(rbenv init -)"
+
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
 source $ZSH/oh-my-zsh.sh
+
 source $HOME/.zshenv
-source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS
+    source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ "$(uname)" == "Linux" ]]; then
+    # Linux
+    source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Check if eza command exists
+if command -v eza &> /dev/null; then
+    alias ls='eza'
+fi
+
+# Check if nvim command exists
+if command -v nvim &> /dev/null; then
+    alias vim='nvim'
+fi
 
 # fzf
 source $HOME/.config/zsh/completion.zsh
