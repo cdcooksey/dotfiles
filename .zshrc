@@ -42,7 +42,6 @@ plugins=(
   git
   vi-mode
   systemd # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/systemd
-  zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
   archlinux
 )
 
