@@ -164,9 +164,6 @@ let g:ale_fixers = {
 " Pretties
 let g:airline_theme='molokai'
 
-execute pathogen#infect()
-call pathogen#helptags()
-
 " Set lightline theme
 let g:lightline = {
   \ 'colorscheme': 'powerline',
