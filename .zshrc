@@ -1,7 +1,8 @@
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.local/share/applications
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
