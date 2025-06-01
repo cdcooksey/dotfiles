@@ -7,6 +7,13 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.local/share/a
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Postgres brew stuff
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
+
+# for signed git commits
+export GPG_TTY=$(tty)
+
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
@@ -51,8 +58,8 @@ plugins=(
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-EDITOR="vim"
-GIT_EDITOR="vim"
+EDITOR="nvim"
+GIT_EDITOR="nvim"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -66,7 +73,14 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias mvim="vim"
+alias e="eza"
+alias el="eza -lG"
+alias nvim="~/Downloads/nvim-macos/bin/nvim"
+alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
+alias gfindhistory="alias | grep ($1)"
+alias ctags="`brew --prefix`/bin/ctags"
+alias cat="bat"
+alias nvimdiff2="nvim -d"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -108,3 +122,14 @@ fi
 # fzf
 source $HOME/.config/zsh/completion.zsh
 source $HOME/.config/zsh/key-bindings.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# Lame git bullshit
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/id_rsa
+fi
+
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
