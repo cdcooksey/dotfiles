@@ -75,10 +75,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias e="eza"
 alias el="eza -lG"
-alias nvim="~/Downloads/nvim-macos/bin/nvim"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
 alias gfindhistory="alias | grep ($1)"
-alias ctags="`brew --prefix`/bin/ctags"
+# alias ctags="`brew --prefix`/bin/ctags"
 alias cat="bat"
 alias nvimdiff2="nvim -d"
 
