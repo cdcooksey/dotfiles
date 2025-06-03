@@ -3,8 +3,9 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim", -- required
     "sindrets/diffview.nvim", -- optional - Diff integration
-
-    -- Only one of these is needed.
     "ibhagwan/fzf-lua", -- optional
+  },
+  keys = {
+    { "<leader>gn", "<cmd>Neogit<cr>", desc = "Open Neogit" },
   },
 }
