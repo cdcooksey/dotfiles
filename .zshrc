@@ -80,11 +80,6 @@ alias gfindhistory="alias | grep ($1)"
 # alias ctags="`brew --prefix`/bin/ctags"
 alias cat="bat"
 alias nvimdiff2="nvim -d"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:$HOME/Downloads/RubyMine-2021.2/bin"
-
 alias ls="ls --color"
 alias bi="BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install"
 alias gfindhistory="alias | grep ($1)"
@@ -103,10 +98,6 @@ elif [[ "$(uname)" == "Linux" ]]; then
     # Linux
     source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Check if eza command exists
 if command -v eza &> /dev/null; then
