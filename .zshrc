@@ -96,7 +96,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ "$(uname)" == "Linux" ]]; then
     # Linux
-    source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 # Check if eza command exists
