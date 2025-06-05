@@ -121,5 +121,3 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval "$(ssh-agent -s)"
     ssh-add -K ~/.ssh/id_rsa
 fi
-
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
