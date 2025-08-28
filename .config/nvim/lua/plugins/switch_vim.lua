@@ -10,7 +10,7 @@ return {
       }
 
       -- Map <leader>$$ to switch
-      vim.keymap.set("n", "<leader>$", ":Switch<CR>", { desc = "Switch word" })
+      vim.keymap.set("n", "<leader>$a", ":Switch<CR>", { desc = "Switch word" })
     end,
   },
 }
