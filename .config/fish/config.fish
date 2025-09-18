@@ -41,6 +41,7 @@ abbr pacrem 'sudo pacman -Rs'
 abbr yaupg 'sudo yay -Syu'
 abbr yarem 'sudo yay -Rs'
 abbr src 'source ~/.config/fish/config.fish'
+abbr ber 'bundle exec rspec'
 
 # Set editor
 set -gx EDITOR nvim
