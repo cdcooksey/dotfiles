@@ -43,6 +43,7 @@ abbr yarem 'sudo yay -Rs'
 abbr src 'source ~/.config/fish/config.fish'
 abbr ber 'bundle exec rspec'
 abbr ls eza
+abbr gpom 'git push origin main'
 
 # Set editor
 set -gx EDITOR nvim
