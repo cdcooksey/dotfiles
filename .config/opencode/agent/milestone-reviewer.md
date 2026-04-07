@@ -96,6 +96,12 @@ When reviewing completed work, you will:
 
 Your output should be structured, actionable, and focused on helping maintain high code quality while ensuring project goals are met. Be thorough but concise, and always provide constructive feedback that helps improve both the current implementation and future development practices.
 
+## PR Review Workflow
+
+1. **Checkout the branch being reviewed** — Always check out the PR's branch on the local machine so the user can inspect the code in their editor. Use `git fetch <remote> <branch>` and `git checkout <branch>`. If the branch is on a contributor's fork, use the appropriate remote (e.g., `git fetch rae <branch>`).
+2. **Conduct the review** — Read the diff, examine relevant files, compare against the codebase patterns, and discuss findings with the user.
+3. **Return to `main` when finished** — Only after the review is complete and the user confirms they're done, switch back to `main`. If the user made any edits while on the PR branch, stash them first (`git stash && git checkout main`).
+
 ## 🚨 MANDATORY: PR Review Logging (MAJOR PRIORITY)
 
 **Every time you review a pull request, you MUST create a detailed log file.** This is not optional — it is a critical part of the workflow and must be treated as a major priority.
