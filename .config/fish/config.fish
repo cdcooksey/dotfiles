@@ -44,6 +44,10 @@ abbr src 'source ~/.config/fish/config.fish'
 abbr ber 'bundle exec rspec'
 abbr ls eza
 abbr gpom 'git push origin main'
+abbr python python3
+abbr pip pip3
+
+alias brew="env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
 
 # Set editor
 set -gx EDITOR nvim
