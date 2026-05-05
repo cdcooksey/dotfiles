@@ -44,6 +44,8 @@ abbr src 'source ~/.config/fish/config.fish'
 abbr ber 'bundle exec rspec'
 abbr ls eza
 abbr gpom 'git push origin main'
+abbr gfu 'git fetch upstream'
+abbr gmum 'git merge upstream/main'
 abbr python python3
 abbr pip pip3
 
