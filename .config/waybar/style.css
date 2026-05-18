@@ -1,11 +1,12 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-   /* font-family: "Roboto Mono Medium", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-   /* font-family: "Nimbus Mono", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-   font-family: "Noto Sans Mono", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+   /* font-family: "Noto Sans Mono", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
    /* font-family: "Jetbrains Mono Nerd", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-   font-size: 16px;
-   border-radius: 8px;
+   /* font-family: "JetBrainsMono Nerd Font", "otf-font-awesome"; */
+   /* font-family: "Pomodoro"; */
+   font-family: "JetBrainsMono NFM Medium";
+   font-size: 14px;
+   border-radius: 20px;
 }
 
 window#waybar {
@@ -124,17 +125,20 @@ button:hover {
     background-color: transparent;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    font-size: 0.85rem;
 }
 
 #battery {
     background-color: #ffffff;
     color: #000000;
+    font-size: 0.85rem;
 }
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
+    font-size: 0.85rem;
 }
 
 @keyframes blink {
@@ -179,6 +183,7 @@ label:focus {
 }
 
 #cpu {
+    font-size: 0.85rem;
     background-color: #2ecc71;
     color: #000000;
     margin: 0 10px 0 10px;
@@ -187,9 +192,11 @@ label:focus {
 #memory {
     background-color: #9b59b6;
     margin: 0 10px 0 10px;
+    font-size: 0.85rem;
 }
 
 #disk {
+    font-size: 0.85rem;
     background-color: #964B00;
     margin: 0 10px 0 10px;
 }
@@ -199,6 +206,7 @@ label:focus {
 }
 
 #network {
+    font-size: 0.85rem;
     background-color: #2980b9;
     margin: 0 10px 0 10px;
 }
