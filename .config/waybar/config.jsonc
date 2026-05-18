@@ -19,7 +19,6 @@
         "cpu",
         "memory",
         "temperature",
-        "backlight",
         "battery",
         "clock",
         "tray",
@@ -117,11 +116,6 @@
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "TEMP {temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
