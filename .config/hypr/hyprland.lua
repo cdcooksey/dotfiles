@@ -147,7 +147,7 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-require('hyprland.key_binds')
+require('hyprland.keybinds')
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
