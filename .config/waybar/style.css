@@ -118,10 +118,6 @@ button:hover {
 #clock {
     /* background-color: #64727D; */
     background-color: transparent;
-    margin-left: 10px;
-    margin-right: 10px;
-    /* margin-top: 5px; */
-    font-size: 0.85rem;
 }
 
 #battery {
