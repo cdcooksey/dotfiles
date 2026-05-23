@@ -110,7 +110,7 @@ source $HOME/.config/zsh/key-bindings.zsh
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # Lame git bullshit
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval "$(ssh-agent -s)"
-    ssh-add -K ~/.ssh/id_rsa
-fi
+# if [ -z "$SSH_AUTH_SOCK" ] ; then
+#     eval "$(ssh-agent -s)"
+#     ssh-add -K ~/.ssh/id_rsa
+# fi
