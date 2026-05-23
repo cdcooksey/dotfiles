@@ -92,15 +92,6 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.zshenv
-if [[ "$(uname)" == "Darwin" ]]; then
-    # macOS
-    source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [[ "$(uname)" == "Linux" ]]; then
-    # Linux
-    source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-
 # Check if eza command exists
 if command -v eza &> /dev/null; then
     alias ls='eza'
