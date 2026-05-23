@@ -7,3 +7,6 @@ background-opacity = 0.8
 # Empty values reset the configuration to the default value
 font-family =
 
+# quit-after-last-window-closed = true
+# quit-after-last-window-closed-delay = 20m
+
