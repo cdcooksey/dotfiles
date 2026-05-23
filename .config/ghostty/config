@@ -1,0 +1,9 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+background = 181926
+foreground = fff
+background-opacity = 0.8
+
+# Empty values reset the configuration to the default value
+font-family =
+
