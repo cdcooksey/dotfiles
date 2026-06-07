@@ -10,3 +10,5 @@ font-family =
 # quit-after-last-window-closed = true
 # quit-after-last-window-closed-delay = 20m
 
+image-storage-limit = 320000000
+
