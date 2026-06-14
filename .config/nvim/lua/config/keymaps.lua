@@ -9,3 +9,6 @@ vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>", { desc = "Go to last test fi
 vim.keymap.set("n", "<leader>$j", ":SplitjoinJoin<CR>", { desc = "Join line" })
 vim.keymap.set("n", "<leader>$s", ":SplitjoinSplit<CR>", { desc = "Split line" })
 vim.keymap.set("n", "<leader>$a", ":Switch<CR>", { desc = "Switch word" })
+vim.keymap.set("n", "<leader>yp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, { desc = "Yank file path" })
