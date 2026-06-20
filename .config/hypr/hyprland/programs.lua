@@ -1,4 +1,4 @@
 terminal = "ghostty +new-window"
-fileManager = "yazi"
+fileManager = "ghostty -e yazi"
 menu = "fuzzel"
 browser = "firefox"
