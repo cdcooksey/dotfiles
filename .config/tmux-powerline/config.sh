@@ -14,7 +14,7 @@ export TMUX_POWERLINE_ERROR_LOGS_SCOPES=""
 export TMUX_POWERLINE_PATCHED_FONT_IN_USE="true"
 
 # The theme to use.
-export TMUX_POWERLINE_THEME="default"
+export TMUX_POWERLINE_THEME="my-theme"
 # Overlay directory to look for themes. There you can put your own themes outside the repo. Fallback will still be the "themes" directory in the repo.
 export TMUX_POWERLINE_DIR_USER_THEMES="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-powerline/themes"
 # Overlay directory to look for segments. There you can put your own segments outside the repo. Fallback will still be the "segments" directory in the repo.
@@ -146,8 +146,7 @@ export TMUX_POWERLINE_SEG_GITHUB_NOTIFICATIONS_TOKEN=""
 
 # hostname.sh {
 # Use short, long or custom format for the hostname. Can be {"short", "long", "custom"}.
-# export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT="short"
-export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT=false
+export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT="short"
 # }
 
 # ifstat.sh {
