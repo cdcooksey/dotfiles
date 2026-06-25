@@ -10,6 +10,9 @@ set -g fish_greeting
 # Enable Vi key bindings
 fish_vi_key_bindings
 
+# Make auto-complete work for suggestions that are not in command history
+bind tab accept-autosuggestion
+
 # ctlr+R now using PatrickF1/fzf.fish
 
 # Set prompt (can replace with your own or a theme)
