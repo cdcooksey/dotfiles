@@ -2,12 +2,23 @@
   email = cdcooksey@gmail.com
   name = Charlie Cooksey
 
+[init]
+  defaultBranch = main
+
 [push]
   default = simple
   followTags = true
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
 
 [core]
   editor = nvim
+  autocrlf = input
 
 [color]
   ui = auto
@@ -30,7 +41,11 @@
   untracked = red bold
 
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
+
+[merge]
+  tool = nvimdiff
+  ff = only
 
 [difftool]
   prompt = false
@@ -42,13 +57,10 @@
   chunkyadd = add --patch # stage commits chunk by chunk
 
   # log
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   lgi = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 
   re = remote
-  ls = ls-files
  
   # Commit Amend Reuse Message HEAD
   carmh = commit --amend --reuse-message=HEAD
