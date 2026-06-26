@@ -30,6 +30,8 @@ hl.bind("SUPER + Tab", function()
 	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
 end)
 
+hl.bind("SUPER + SHIFT + Tab", hl.dsp.window.swap({ next = true }))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
