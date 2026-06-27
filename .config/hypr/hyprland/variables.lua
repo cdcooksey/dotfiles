@@ -12,7 +12,7 @@ hl.config({
           "#232634",
           "#949cbb",
         },
-        angle = 45,
+        angle = 90,
       },
       inactive_border = "#232634",
     },
@@ -27,7 +27,7 @@ hl.config({
   },
 
   decoration = {
-    rounding = 8,
+    rounding = 6,
     rounding_power = 3,
 
     -- Change transparency of focused and unfocused windows
