@@ -14,6 +14,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 -- Screenshot
 hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshot"))
