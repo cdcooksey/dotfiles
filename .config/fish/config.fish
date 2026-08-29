@@ -42,6 +42,8 @@ abbr python python3
 abbr pip pip3
 abbr cd z
 abbr cat 'bat -p'
+abbr df duf
+abbr du ncdu
 
 alias brew="env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
 
