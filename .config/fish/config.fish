@@ -54,6 +54,10 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 # Set editor
 set -gx EDITOR nvim
 
+# man pages use bat for pager:
+set -gx GROFF_NO_SGR 1
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
 # Add user bin to path if not already
 set -U fish_user_paths $HOME/bin $fish_user_paths
 
