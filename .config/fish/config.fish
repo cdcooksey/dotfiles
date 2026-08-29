@@ -24,23 +24,24 @@ bind tab accept-autosuggestion
 # end
 
 # Useful aliases (like in Bash/Zsh)
-alias ll='eza -alF'
-alias la='eza -A'
-alias g='git'
-alias v='nvim'
-
+abbr ls eza
+abbr ll 'eza -alF'
+abbr la 'eza -A'
+abbr g git
+abbr v nvim
 abbr pacupg 'sudo pacman -Syu'
 abbr pacrem 'sudo pacman -Rs'
 abbr yaupg 'sudo yay -Syu'
 abbr yarem 'sudo yay -Rs'
 abbr src 'source ~/.config/fish/config.fish'
 abbr ber 'bundle exec rspec'
-abbr ls eza
 abbr gpom 'git push origin main'
 abbr gfu 'git fetch upstream'
 abbr gmum 'git merge upstream/main'
 abbr python python3
 abbr pip pip3
+abbr cd z
+abbr cat 'bat -p'
 
 alias brew="env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
 
