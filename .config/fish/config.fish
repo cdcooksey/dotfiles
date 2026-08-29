@@ -31,6 +31,7 @@ abbr g git
 abbr v nvim
 abbr pacupg 'sudo pacman -Syu'
 abbr pacrem 'sudo pacman -Rs'
+abbr pacins 'sudo pacman -S'
 abbr yaupg 'sudo yay -Syu'
 abbr yarem 'sudo yay -Rs'
 abbr src 'source ~/.config/fish/config.fish'
@@ -44,6 +45,7 @@ abbr cd z
 abbr cat 'bat -p'
 abbr df duf
 abbr du ncdu
+abbr ps procs
 
 alias brew="env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
 
