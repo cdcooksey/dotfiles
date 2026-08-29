@@ -19,6 +19,7 @@
 [core]
   editor = nvim
   autocrlf = input
+  pager = delta
 
 [color]
   ui = auto
@@ -46,6 +47,7 @@
 [merge]
   tool = nvimdiff
   ff = only
+  conflictStyle = zdiff3
 
 [difftool]
   prompt = false
@@ -67,3 +69,11 @@
   
   # Mainly for YADM
   untracked = !"f() { git status --porcelain=v1 -zunormal | xargs -0n1 printf \"%s\\n\" | grep -E '^\\?\\? \\.' | cut -c4-; }; f"
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  dark = true
+  line-numbers = true
+  hyperlinks = true
