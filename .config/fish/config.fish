@@ -24,11 +24,10 @@ bind tab accept-autosuggestion
 # end
 
 # Useful aliases (like in Bash/Zsh)
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='eza -alF'
+alias la='eza -A'
 alias g='git'
-alias v='nvim' # assuming you're a Vim user
+alias v='nvim'
 
 abbr pacupg 'sudo pacman -Syu'
 abbr pacrem 'sudo pacman -Rs'
