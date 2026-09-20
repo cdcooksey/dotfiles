@@ -12,5 +12,20 @@
     }
   },
   "theme": "dark",
-  "outputStyle": "charlie"
+  "outputStyle": "charlie",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/charlie/.claude/hooks/block-protected-branch-commit.py",
+            "timeout": 10,
+            "statusMessage": "Checking branch protection"
+          }
+        ]
+      }
+    ]
+  }
 }
