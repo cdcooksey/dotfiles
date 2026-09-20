@@ -37,6 +37,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/warn-dirty-protected.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "permissions": {

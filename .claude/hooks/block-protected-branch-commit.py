@@ -45,11 +45,22 @@ def deny(reason):
     sys.exit(0)
 
 
-def invocations(tokens):
-    """Yield (wrapper, subcommand, dir_override, rest) for each git-like call."""
+def invocations(tokens, base_dir):
+    """Yield (wrapper, subcommand, effective_dir, rest) for each git-like call.
+
+    Tracks `cd` within the command so that `cd /repo && git commit` is resolved
+    against /repo rather than the session's working directory.
+    """
+    cwd = base_dir
     i = 0
     while i < len(tokens):
         name = os.path.basename(tokens[i])
+        if name == "cd" and i + 1 < len(tokens) and not tokens[i + 1].startswith("-"):
+            # shlex leaves operators glued on: `cd /repo; git push` -> "/repo;"
+            target = os.path.expanduser(tokens[i + 1].rstrip(";&|"))
+            cwd = target if os.path.isabs(target) else os.path.join(cwd, target)
+            i += 2
+            continue
         if name not in WRAPPERS:
             i += 1
             continue
@@ -76,7 +87,8 @@ def invocations(tokens):
                 break
             rest.append(tokens[i])
             i += 1
-        yield name, subcommand, dir_override, rest
+        effective = os.path.join(cwd, dir_override) if dir_override else cwd
+        yield name, subcommand, effective, rest
 
 
 def current_branch(wrapper, cwd):
@@ -138,13 +150,12 @@ def main():
     except ValueError:
         tokens = command.split()
 
-    for wrapper, subcommand, dir_override, rest in invocations(tokens):
+    for wrapper, subcommand, repo_dir, rest in invocations(tokens, cwd):
         if not WRAPPERS.get(wrapper):
             continue
         if subcommand not in ("commit", "push"):
             continue
 
-        repo_dir = os.path.join(cwd, dir_override) if dir_override else cwd
         branch = current_branch(wrapper, repo_dir)
 
         if subcommand == "commit":
