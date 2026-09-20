@@ -1,0 +1,8 @@
+[Unit]
+Description=Notify that iCloud bisync failed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/notify-send -a "iCloud sync" -u critical \
+  "iCloud sync failed" \
+  "rclone-icloud-bisync.service failed. journalctl --user -u rclone-icloud-bisync.service -e"

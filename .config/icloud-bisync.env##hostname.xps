@@ -1,0 +1,15 @@
+# Laptop. Differs from ##default only where being a laptop matters.
+REMOTE=icloud-drive:
+
+MAX_DELETE=50
+CONFLICT_RESOLVE=none
+
+# Do not burn a phone hotspot's data allowance on a full iCloud sync.
+# Requires nmcli, which is present under NetworkManager.
+SKIP_IF_METERED=1
+
+# Roaming means more transient failures, so alert a little later to avoid
+# noise from ordinary Wi-Fi flapping.
+FAIL_ALERT_AFTER=5
+
+EXTRA_ARGS=--ignore-size

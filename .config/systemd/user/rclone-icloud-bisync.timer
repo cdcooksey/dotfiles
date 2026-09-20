@@ -1,0 +1,16 @@
+[Unit]
+Description=Run iCloud bisync periodically
+
+[Timer]
+# Wall-clock, not monotonic. A user manager that starts late (login well after
+# boot) still gets a valid next elapse, which OnBootSec= does not.
+OnCalendar=*:0/15
+# Meaningful only with OnCalendar=. Catches up one run after suspend or downtime.
+Persistent=true
+# Keeps a laptop and a desktop from hitting iCloud at the same instant.
+RandomizedDelaySec=2min
+AccuracySec=30s
+Unit=rclone-icloud-bisync.service
+
+[Install]
+WantedBy=timers.target

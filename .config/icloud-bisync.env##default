@@ -1,0 +1,12 @@
+# Fallback for any host without its own ##hostname. variant.
+# Wired desktop assumptions. All keys optional; the wrapper has sane defaults.
+REMOTE=icloud-drive:
+
+# LOCAL_DIR needs an ABSOLUTE path. systemd does not expand %h in an
+# EnvironmentFile. Unset means $HOME/iCloud, which is what you want.
+
+MAX_DELETE=50
+CONFLICT_RESOLVE=none
+SKIP_IF_METERED=0
+FAIL_ALERT_AFTER=3
+EXTRA_ARGS=--ignore-size

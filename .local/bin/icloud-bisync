@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+# icloud-bisync — resilient wrapper around `rclone bisync` for unattended use.
+#
+# Differs from a bare `rclone bisync` in four ways that matter on a machine
+# that sleeps, roams networks, or reboots:
+#   1. --resilient/--recover so a transient backend error self-heals.
+#   2. Quiet skip (exit 0) when offline/metered/already-running, so a laptop
+#      waking without network does not look like a failure.
+#   3. Hard stop plus a loud notification when bisync genuinely needs a manual
+#      --resync, instead of retrying uselessly forever in silence.
+#   4. Consecutive-failure counting, so you get one alert, not one per tick.
+set -uo pipefail
+
+: "${REMOTE:=icloud-drive:}"
+: "${LOCAL_DIR:=$HOME/iCloud}"
+: "${LOG_FILE:=$HOME/.local/state/rclone-icloud.log}"
+: "${STATE_DIR:=$HOME/.local/state/icloud-bisync}"
+: "${MAX_DELETE:=50}"
+: "${CONFLICT_RESOLVE:=none}"  # keep both copies; never auto-discard a side
+: "${MAX_LOCK:=15m}"
+: "${FAIL_ALERT_AFTER:=3}"
+: "${WEDGED_RENOTIFY_SECS:=43200}"   # 12h
+: "${PROBE_HOST:=www.icloud.com}"
+: "${PROBE_PORT:=443}"
+: "${SKIP_IF_METERED:=1}"
+: "${EXTRA_ARGS:=--ignore-size}"
+
+mkdir -p "$STATE_DIR" "$(dirname "$LOG_FILE")" "$LOCAL_DIR"
+
+WEDGED="$STATE_DIR/wedged"
+NOTIFIED="$STATE_DIR/wedged-notified"
+FAILS="$STATE_DIR/consecutive-failures"
+LOCK="$STATE_DIR/run.lock"
+RESYNC_CMD="rclone bisync $REMOTE $LOCAL_DIR --resync $EXTRA_ARGS"
+
+note() { printf '%s icloud-bisync: %s\n' "$(date -Is)" "$*"; }
+
+notify() {
+  local urgency=$1 title=$2 body=$3
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a "iCloud sync" -u "$urgency" "$title" "$body" || true
+  fi
+}
+
+online() { timeout 5 bash -c "exec 3<>/dev/tcp/$PROBE_HOST/$PROBE_PORT" 2>/dev/null; }
+
+metered() {
+  [[ "$SKIP_IF_METERED" == 1 ]] || return 1
+  command -v nmcli >/dev/null 2>&1 || return 1
+  nmcli -t -f GENERAL.METERED device show 2>/dev/null | grep -q ':yes'
+}
+
+stale() { # $1=file $2=max_age_secs — true if missing or older than max age
+  [[ ! -f "$1" ]] && return 0
+  (( $(date +%s) - $(stat -c %Y "$1") >= $2 ))
+}
+
+# --- Do not spin if a prior run left bisync needing human intervention. -----
+if [[ -f "$WEDGED" ]]; then
+  note "wedged since $(cat "$WEDGED"); manual --resync required, not retrying"
+  if stale "$NOTIFIED" "$WEDGED_RENOTIFY_SECS"; then
+    notify critical "iCloud sync is stopped" "bisync needs a manual resync:
+$RESYNC_CMD"
+    date -Is > "$NOTIFIED"
+  fi
+  exit 3
+fi
+
+# --- One run at a time. ------------------------------------------------------
+exec 9>"$LOCK"
+if ! flock -n 9; then note "another run in progress, skipping"; exit 0; fi
+
+# --- Conditions. A skip is not a failure. ------------------------------------
+if ! online; then note "no route to $PROBE_HOST, skipping"; exit 0; fi
+if metered;   then note "metered connection, skipping";      exit 0; fi
+
+# --- Run. --------------------------------------------------------------------
+offset=$(stat -c %s "$LOG_FILE" 2>/dev/null || echo 0)
+
+# shellcheck disable=SC2086  # EXTRA_ARGS is intentionally word-split
+rclone bisync "$REMOTE" "$LOCAL_DIR" \
+  --resilient --recover \
+  --max-lock "$MAX_LOCK" \
+  --conflict-resolve "$CONFLICT_RESOLVE" \
+  --max-delete "$MAX_DELETE" \
+  --log-level INFO \
+  --log-file "$LOG_FILE" \
+  $EXTRA_ARGS
+rc=$?
+
+run_output=$(tail -c "+$((offset + 1))" "$LOG_FILE" 2>/dev/null || true)
+
+if (( rc == 0 )); then
+  echo 0 > "$FAILS"
+  rm -f "$NOTIFIED"
+  note "ok"
+  exit 0
+fi
+
+if grep -q 'Must run --resync to recover' <<<"$run_output"; then
+  date -Is > "$WEDGED"
+  notify critical "iCloud sync is stopped" "bisync state is invalid. Recover with:
+$RESYNC_CMD"
+  note "wedged: bisync requires a manual --resync"
+  exit 3
+fi
+
+n=$(( $(cat "$FAILS" 2>/dev/null || echo 0) + 1 ))
+echo "$n" > "$FAILS"
+note "failed rc=$rc, consecutive=$n"
+if (( n == FAIL_ALERT_AFTER )); then
+  notify normal "iCloud sync failing" "$n consecutive failures. Log: $LOG_FILE"
+fi
+exit 1

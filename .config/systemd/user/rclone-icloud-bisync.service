@@ -1,0 +1,13 @@
+[Unit]
+Description=Bisync iCloud Drive via rclone
+OnFailure=icloud-bisync-alert.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=-%h/.config/icloud-bisync.env
+ExecStart=%h/.local/bin/icloud-bisync
+# A first sync over a slow link can take a long time; do not kill it at 90s.
+TimeoutStartSec=2h
+# Stay out of the way of interactive work.
+Nice=10
+IOSchedulingClass=idle

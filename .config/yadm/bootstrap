@@ -1,43 +1,107 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# yadm bootstrap: the per-machine setup that tracked dotfiles cannot carry.
+#
+# Deliberately boring:
+#   - installs no packages and never calls sudo
+#   - changes no file data and makes no network calls
+#   - idempotent, so re-run it whenever you like
+#   - reports the manual steps a machine still needs rather than guessing
+#
+# Run `yadm bootstrap --check` to see what it would do without doing it.
 
-system_type=$(uname -s)
+set -uo pipefail
 
-if [ "$system_type" = "Darwin" ]; then
-  brew update
-fi
+DRY=0
+[ "${1:-}" = "--check" ] && DRY=1
 
+os=$(uname -s)
+host=$(uname -n)
+todo=""
 
-if [ "$system_type" = "Linux" ]; then
-  sudo apt-get update
-fi
+ok()   { printf '  ok     %s\n' "$*"; }
+skip() { printf '  skip   %s\n' "$*"; }
+need() { printf '  todo   %s\n' "$*"; todo="${todo}${*}"$'\n'; }
 
-if command -v vim >/dev/null 2>&1; then
-  echo 'Bootstraping vim'
-  vim 'VundleUpdate' '+qall'
+# act "<what it achieves>" cmd...
+# Reports one line per action. In check mode it reports the intent and
+# claims nothing, so the output never asserts work that did not happen.
+act() {
+  local desc=$1; shift
+  if [ "$DRY" = 1 ]; then printf '  would  %s\n' "$desc"; return 0; fi
+  if "$@" >/dev/null 2>&1; then printf '  ok     %s\n' "$desc"; return 0; fi
+  return 1
+}
+
+printf 'yadm bootstrap on %s (%s)%s\n' "$host" "$os" \
+  "$([ "$DRY" = 1 ] && printf ' [check only]')"
+
+# --------------------------------------------------------------------------
+# systemd user units. Linux only; macOS has no equivalent here.
+# --------------------------------------------------------------------------
+printf '\nsystemd user units\n'
+if [ "$os" != "Linux" ] || ! command -v systemctl >/dev/null 2>&1; then
+  skip "not a systemd host"
 else
-  if [ "$system_type" = "Linux" ]; then
-    sudo apt-get -uy install vim
+  act "daemon reloaded" systemctl --user daemon-reload ||
+    need "reload units: systemctl --user daemon-reload"
+
+  unit="rclone-icloud-bisync.timer"
+  if [ -f "$HOME/.config/systemd/user/$unit" ]; then
+    act "$unit armed" systemctl --user enable --now "$unit" ||
+      need "arm the sync timer: systemctl --user enable --now $unit"
+  else
+    skip "$unit not tracked on this host"
   fi
 
-  if [ "$system_type" = "Darwin" ]; then
-    brew install vim
+  # Without lingering, user timers only run while you are logged in.
+  if [ "$(loginctl show-user "$USER" -p Linger --value 2>/dev/null)" = "yes" ]; then
+    ok "lingering already enabled"
+  elif act "lingering enabled, timers run without a login" \
+        loginctl enable-linger "$USER"; then
+    :
+  else
+    need "enable lingering: loginctl enable-linger $USER"
   fi
-  vim 'VundleUpdate' '+qall'
 fi
 
-if command -v nvim >/dev/null 2>&1; then
-  echo 'Bootstraping nvim'
-  nvim 'VundleUpdate' '+qall'
+# --------------------------------------------------------------------------
+# iCloud sync. Only meaningful on Linux; macOS syncs iCloud Drive natively.
+# Credentials are per-machine and deliberately never tracked by yadm.
+# --------------------------------------------------------------------------
+printf '\niCloud sync\n'
+if [ "$os" = "Darwin" ]; then
+  skip "macOS syncs iCloud Drive natively"
+elif ! command -v rclone >/dev/null 2>&1; then
+  need "install rclone"
 else
-  if [ "$system_type" = "Linux" ]; then
-    sudo apt-get -uy install nvim
-  fi
+  ok "rclone $(rclone version 2>/dev/null | awk 'NR==1{print $2}')"
 
-  if [ "$system_type" = "Darwin" ]; then
-    brew install nvim
+  # Reads the local config file only. No network traffic.
+  if ! rclone listremotes 2>/dev/null | grep -qx 'icloud-drive:'; then
+    need "authenticate this machine: rclone config   (name the remote icloud-drive)"
+  else
+    ok "remote icloud-drive: configured"
+
+    # Unattended bisync refuses to run without a prior listing pair.
+    wd="${XDG_CACHE_HOME:-$HOME/.cache}/rclone/bisync"
+    if compgen -G "$wd/*icloud*path1.lst" >/dev/null 2>&1; then
+      ok "bisync baseline present"
+    else
+      need "establish the baseline once: rclone bisync icloud-drive: \"\$HOME/iCloud\" --resync --ignore-size"
+    fi
+
+    wedged="$HOME/.local/state/icloud-bisync/wedged"
+    if [ -f "$wedged" ]; then
+      need "sync has been stopped since $(cat "$wedged" 2>/dev/null); recover with the --resync above, then: rm $wedged"
+    fi
   fi
-  nvim 'VundleUpdate' '+qall'
 fi
 
-#echo "Init submodules"
-#yadm submodule update --recursive --init
+# --------------------------------------------------------------------------
+printf '\n'
+if [ -z "$todo" ]; then
+  printf 'Nothing left to do.\n'
+else
+  printf 'Manual steps remaining:\n'
+  printf '%s' "$todo" | sed 's/^/  - /'
+fi

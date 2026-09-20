@@ -1,6 +1,26 @@
 #!/usr/bin/env bash
-[ "$(uname)" = "Linux" ] || exit 0
-[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] || exit 0
-command -v hyprctl >/dev/null 2>&1 || exit 0
+# Runs after yadm relinks alternates: alt, checkout, pull, clone.
+# Each concern is self-contained so one early exit cannot skip the others.
 
-hyprctl reload >/dev/null 2>&1
+[ "$(uname)" = "Linux" ] || exit 0
+
+reload_hyprland() {
+  [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] || return 0
+  command -v hyprctl >/dev/null 2>&1 || return 0
+  hyprctl reload >/dev/null 2>&1
+}
+
+reload_systemd_user() {
+  command -v systemctl >/dev/null 2>&1 || return 0
+  [ -d "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/systemd" ] || return 0
+  systemctl --user daemon-reload >/dev/null 2>&1
+
+  # Self-installing: a fresh `yadm clone` on a new machine arms the timer.
+  if [ -f "$HOME/.config/systemd/user/rclone-icloud-bisync.timer" ]; then
+    systemctl --user enable --now rclone-icloud-bisync.timer >/dev/null 2>&1
+  fi
+}
+
+reload_hyprland
+reload_systemd_user
+exit 0
