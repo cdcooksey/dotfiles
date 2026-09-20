@@ -20,9 +20,20 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/charlie/.claude/hooks/block-protected-branch-commit.py",
+            "command": "$HOME/.claude/hooks/block-protected-branch-commit.py",
             "timeout": 10,
             "statusMessage": "Checking branch protection"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/check-guard.sh",
+            "timeout": 10
           }
         ]
       }
