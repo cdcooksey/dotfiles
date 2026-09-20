@@ -16,8 +16,7 @@ import sys
 PROTECTED = {"main", "master", "trunk"}
 
 # git-compatible wrappers to inspect. False exempts one.
-# yadm tracks dotfiles on its default branch by design, so it is exempt.
-WRAPPERS = {"git": True, "yadm": False}
+WRAPPERS = {"git": True, "yadm": True}
 
 # Global git options that consume a following value.
 GLOBAL_OPTS_WITH_VALUE = {"-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path"}
