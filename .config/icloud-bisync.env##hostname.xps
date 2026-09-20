@@ -1,5 +1,5 @@
 # Laptop. Differs from ##default only where being a laptop matters.
-REMOTE=icloud-drive:
+REMOTE=icloud:
 
 MAX_DELETE=50
 CONFLICT_RESOLVE=none
