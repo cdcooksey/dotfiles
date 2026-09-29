@@ -42,7 +42,14 @@
   untracked = red bold
 
 [diff]
-  tool = nvimdiff
+  tool = nvim_difftool
+
+# lazygit's difftool (ctrl+t) uses `git difftool --dir-diff`, which passes two
+# directories; plain nvimdiff can't diff those. Neovim 0.12's bundled
+# nvim.difftool can. Called via :DiffTool rather than `nvim -d <dirs>` so
+# LazyVim's file explorer doesn't claim the directory arguments first.
+[difftool "nvim_difftool"]
+  cmd = nvim -c \"packadd nvim.difftool\" -c \"DiffTool $LOCAL $REMOTE\"
 
 [merge]
   tool = nvimdiff
