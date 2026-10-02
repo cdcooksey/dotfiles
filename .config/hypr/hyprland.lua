@@ -211,3 +211,6 @@ hl.window_rule({
 	opaque = true,
 	no_blur = true,
 })
+
+-- DMS Include Configs
+require("dms.layout")
