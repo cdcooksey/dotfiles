@@ -58,4 +58,9 @@ hl.config({
   animations = {
     enabled = true,
   },
+
+  render = {
+    -- Let fullscreen windows (games) bypass compositing when nothing is drawn over them
+    direct_scanout = 1,
+  },
 })

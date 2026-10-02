@@ -107,6 +107,7 @@ hl.config({
 		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
 		disable_splash_rendering = true,
 		disable_autoreload = true,
+		vrr = 2, -- Adaptive sync for fullscreen windows only
 	},
 })
 
@@ -199,4 +200,14 @@ hl.window_rule({
 
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+-- Steam games: keep them opaque and unblurred when unfocused, so the
+-- compositor isn't redrawing a translucent, blurred game every frame
+hl.window_rule({
+	name = "steam-games-opaque",
+	match = { class = "^steam_app_.*$" },
+
+	opaque = true,
+	no_blur = true,
 })
