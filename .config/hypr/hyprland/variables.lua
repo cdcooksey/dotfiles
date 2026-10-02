@@ -63,4 +63,10 @@ hl.config({
     -- Let fullscreen windows (games) bypass compositing when nothing is drawn over them
     direct_scanout = 1,
   },
+
+  cursor = {
+    -- Software cursor: the hardware cursor got stuck as the desktop I-beam in
+    -- fullscreen XWayland games (AoE4) after switching workspaces and back
+    no_hardware_cursors = 1,
+  },
 })
