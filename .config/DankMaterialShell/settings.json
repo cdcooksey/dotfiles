@@ -49,7 +49,7 @@
         "battery",
         "controlCenterButton"
       ],
-      "spacing": 4,
+      "spacing": 5,
       "innerPadding": 4,
       "barInsetPadding": -1,
       "barLengthPadding": 0,
@@ -85,7 +85,7 @@
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
-      "maximizeDetection": true,
+      "maximizeDetection": false,
       "useOverlayLayer": false,
       "scrollEnabled": true,
       "scrollXBehavior": "column",
