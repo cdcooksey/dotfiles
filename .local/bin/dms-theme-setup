@@ -1,0 +1,127 @@
+#!/bin/sh
+# dms-theme-setup — one-time, per-machine setup so GTK3, GTK4 and Firefox
+# follow DankMaterialShell's wallpaper colours (currentThemeName "dynamic").
+#
+# Covers the pieces yadm can't track because they are generated, live in a
+# randomly named Firefox profile, or are system state:
+#   1. adw-gtk-theme package (GTK3 needs a theme built on named colours)
+#   2. DMS's own GTK apply + patch (copies adw-gtk3 into ~/.local/share/themes
+#      and patches the colours in; DMS re-patches on every colour change)
+#   3. GTK4 accent: GTK >= 4.16 reads --accent-* CSS variables, which DMS's
+#      dank-colors.css doesn't set
+#   4. GTK3 theme name in settings.ini and gsettings
+#   5. Firefox: widget.gtk.libadwaita-colors.enabled=false via user.js, else
+#      Firefox swaps in built-in libadwaita colours for adw-gtk3
+#
+# Tracked separately in yadm: settings.json (dynamic theme), ghostty/config,
+# hypr env_vars.lua (QT_QPA_PLATFORMTHEME=gtk3, no GTK_THEME).
+#
+# Safe to re-run. Linux only. DMS must be running (its gtk.sh lives in the
+# runtime directory it extracts on start).
+set -eu
+
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+say() { printf '==> %s\n' "$*"; }
+die() { printf 'error: %s\n' "$*" >&2; exit 1; }
+
+[ "$(uname -s)" = Linux ] || die "Linux only"
+command -v pacman >/dev/null 2>&1 || die "pacman not found"
+
+# Light or dark follows DMS; it only records isLightMode when light.
+if grep -q '"isLightMode": *true' "$STATE/DankMaterialShell/session.json" 2>/dev/null; then
+	is_light=true
+	gtk3_theme=adw-gtk3
+else
+	is_light=false
+	gtk3_theme=adw-gtk3-dark
+fi
+
+# 1. Package
+if pacman -Q adw-gtk-theme >/dev/null 2>&1; then
+	say "adw-gtk-theme already installed"
+else
+	say "Installing adw-gtk-theme"
+	sudo pacman -S --needed adw-gtk-theme
+fi
+
+# 2. DMS GTK apply + patch, using the gtk.sh of the running shell
+qs_dir=$(pgrep -af 'qs -p ' | sed -n 's/.*qs -p \([^ ]*\).*/\1/p' | head -n 1)
+gtk_sh="$qs_dir/scripts/gtk.sh"
+[ -n "$qs_dir" ] && [ -f "$gtk_sh" ] || die "DMS isn't running; start it and re-run"
+
+# DMS refuses to touch a gtk.css that is a user symlink (e.g. to another
+# theme). Move such links aside so they can be restored by hand.
+for css in gtk.css gtk-dark.css; do
+	f="$CONFIG/gtk-4.0/$css"
+	if [ -L "$f" ]; then
+		say "Moving GTK4 $css symlink aside to $css.pre-dms"
+		mv "$f" "$f.pre-dms"
+	fi
+done
+
+say "Applying DMS GTK colours"
+bash "$gtk_sh" "$CONFIG" apply "$is_light"
+bash "$gtk_sh" "$CONFIG" patch "$is_light"
+
+# 3. GTK4 accent variables
+gtk4_css="$CONFIG/gtk-4.0/gtk.css"
+if grep -q -- '--accent-bg-color' "$gtk4_css" 2>/dev/null; then
+	say "GTK4 accent variables already present"
+else
+	say "Adding GTK4 accent variables"
+	cat >>"$gtk4_css" <<'EOF'
+
+/* GTK >= 4.16 reads the accent from CSS variables, not @define-color */
+:root {
+  --accent-bg-color: @accent_bg_color;
+  --accent-fg-color: @accent_fg_color;
+}
+EOF
+fi
+
+# 4. GTK3 theme name
+ini="$CONFIG/gtk-3.0/settings.ini"
+mkdir -p "$CONFIG/gtk-3.0"
+if [ ! -f "$ini" ]; then
+	printf '[Settings]\ngtk-theme-name=%s\n' "$gtk3_theme" >"$ini"
+elif grep -q '^gtk-theme-name=' "$ini"; then
+	tmp=$(mktemp)
+	sed "s/^gtk-theme-name=.*/gtk-theme-name=$gtk3_theme/" "$ini" >"$tmp"
+	cat "$tmp" >"$ini"
+	rm -f "$tmp"
+else
+	printf 'gtk-theme-name=%s\n' "$gtk3_theme" >>"$ini"
+fi
+say "GTK3 theme set to $gtk3_theme in settings.ini"
+
+if command -v gsettings >/dev/null 2>&1; then
+	gsettings set org.gnome.desktop.interface gtk-theme "$gtk3_theme"
+	say "GTK3 theme set to $gtk3_theme in gsettings"
+fi
+
+# 5. Firefox: every profile with a prefs.js, in either location Firefox uses
+pref='user_pref("widget.gtk.libadwaita-colors.enabled", false);'
+found=0
+for prefs in "$CONFIG"/mozilla/firefox/*/prefs.js "$HOME"/.mozilla/firefox/*/prefs.js; do
+	[ -f "$prefs" ] || continue
+	found=1
+	userjs="$(dirname "$prefs")/user.js"
+	if grep -qF "$pref" "$userjs" 2>/dev/null; then
+		say "Firefox pref already set in $userjs"
+	else
+		printf '%s\n' "$pref" >>"$userjs"
+		say "Firefox pref added to $userjs"
+	fi
+done
+[ "$found" -eq 1 ] || say "No Firefox profile found; run Firefox once, then re-run"
+
+cat <<'EOF'
+
+Done. Still manual:
+  - Restart Firefox. In about:addons -> Themes, enable "Default" with
+    "Use Linux system theme" ticked (Firefox Sync may already carry this).
+  - Log out of Hyprland and back in if env_vars.lua changed since login.
+  - Ghostty: reload config (Ctrl+Shift+,).
+EOF

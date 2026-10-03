@@ -1,6 +1,8 @@
 {
+  "currentThemeName": "dynamic",
   "cornerRadius": 12,
   "hyprlandResizeOnBorder": true,
+  "blurEnabled": true,
   "controlCenterShowMicPercent": true,
   "appIdSubstitutions": [],
   "cursorSettings": {
@@ -27,7 +29,6 @@
   "batterySuspendTimeout": 1800,
   "lockBeforeSuspend": true,
   "osdPowerProfileEnabled": true,
-  "blurEnabled": true,
   "barConfigs": [
     {
       "id": "default",
