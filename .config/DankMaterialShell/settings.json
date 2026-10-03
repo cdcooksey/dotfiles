@@ -27,6 +27,7 @@
   "batterySuspendTimeout": 1800,
   "lockBeforeSuspend": true,
   "osdPowerProfileEnabled": true,
+  "blurEnabled": true,
   "barConfigs": [
     {
       "id": "default",
@@ -61,7 +62,7 @@
       "barLengthPadding": 0,
       "bottomGap": 0,
       "attachToScreenEdge": false,
-      "transparency": 1,
+      "transparency": 0,
       "widgetTransparency": 1,
       "squareCorners": false,
       "noBackground": false,
