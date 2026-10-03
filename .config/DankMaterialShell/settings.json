@@ -19,6 +19,13 @@
       "cursorHideTimeout": 0
     }
   },
+  "acMonitorTimeout": 1200,
+  "acLockTimeout": 900,
+  "acSuspendTimeout": 5400,
+  "batteryMonitorTimeout": 600,
+  "batteryLockTimeout": 300,
+  "batterySuspendTimeout": 1800,
+  "lockBeforeSuspend": true,
   "osdPowerProfileEnabled": true,
   "barConfigs": [
     {
