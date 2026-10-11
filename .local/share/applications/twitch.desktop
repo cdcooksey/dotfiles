@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Twitch
+Exec=vivaldi --app=https://www.twitch.tv/
+Icon=gnome-twitch
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=www.twitch.tv

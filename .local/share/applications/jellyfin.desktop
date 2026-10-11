@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Jellyfin
+Exec=vivaldi --app=http://jellyfin.lan:8096/
+Icon=jellyfin
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=jellyfin.lan
