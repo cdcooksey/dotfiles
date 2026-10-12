@@ -2,7 +2,7 @@
 Type=Application
 Name=Jellyfin
 Exec=vivaldi --app=http://jellyfin.lan:8096/
-Icon=jellyfin
+Icon=jellyfin-webapp
 Terminal=false
 Categories=Network;WebBrowser;
-StartupWMClass=jellyfin.lan
+StartupWMClass=vivaldi-jellyfin.lan__-Default

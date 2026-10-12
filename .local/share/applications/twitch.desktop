@@ -2,7 +2,7 @@
 Type=Application
 Name=Twitch
 Exec=vivaldi --app=https://www.twitch.tv/
-Icon=gnome-twitch
+Icon=twitch-webapp
 Terminal=false
 Categories=Network;WebBrowser;
-StartupWMClass=www.twitch.tv
+StartupWMClass=vivaldi-www.twitch.tv__-Default

@@ -5,4 +5,4 @@ Exec=vivaldi --app=https://app.hey.com/
 Icon=hey
 Terminal=false
 Categories=Network;WebBrowser;
-StartupWMClass=app.hey.com
+StartupWMClass=vivaldi-app.hey.com__-Default
